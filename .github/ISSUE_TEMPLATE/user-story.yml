@@ -1,0 +1,40 @@
+name: Historia de usuario
+description: Crear una nueva historia de usuario (US)
+title: "US-XX: "
+labels: ["user-story"]
+body:
+  - type: textarea
+    id: historia
+    attributes:
+      label: Historia de usuario
+      description: Formato "Como ..., quiero ..., para ...".
+      placeholder: |
+        **Como** [rol], **quiero** [objetivo], **para** [beneficio].
+    validations:
+      required: true
+  - type: textarea
+    id: criterios
+    attributes:
+      label: Criterios de aceptación
+      description: Un criterio por línea, en formato Dado / cuando / entonces.
+      value: |
+        - [ ] Dado ..., cuando ..., entonces ...
+    validations:
+      required: true
+  - type: textarea
+    id: notas
+    attributes:
+      label: Notas técnicas
+      description: Decisiones, restricciones o dependencias relevantes.
+    validations:
+      required: false
+  - type: textarea
+    id: dod
+    attributes:
+      label: Definición de terminado
+      value: |
+        - [ ] CI verde.
+        - [ ] Documentación actualizada.
+        - [ ] Criterios de aceptación cumplidos.
+    validations:
+      required: true
