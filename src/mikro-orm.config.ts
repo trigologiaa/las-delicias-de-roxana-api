@@ -1,15 +1,8 @@
-import { Migrator } from "@mikro-orm/migrations";
-import { defineConfig } from "@mikro-orm/postgresql";
+import { existsSync } from "node:fs";
+import { databaseOptions } from "./shared/infrastructure/database/database.options";
 
-export default defineConfig({
-  clientUrl: process.env.DATABASE_URL,
-  discovery: {
-    warnWhenNoEntities: false,
-  },
-  entities: [],
-  extensions: [Migrator],
-  migrations: {
-    path: "dist/shared/infrastructure/database/migrations",
-    pathTs: "src/shared/infrastructure/database/migrations",
-  },
-});
+if (existsSync(".env")) {
+  process.loadEnvFile(".env");
+}
+
+export default databaseOptions(process.env.DATABASE_URL);
