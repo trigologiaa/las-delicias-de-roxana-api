@@ -12,4 +12,13 @@ describe("validateEnv", (): void => {
     const validate = (): Env => validateEnv(source);
     expect(validate).toThrow("Invalid environment: DATABASE_URL");
   });
+
+  it("exposes the port as a number", (): void => {
+    const source = {
+      DATABASE_URL: "postgresql://user:secret@localhost:5432/db",
+      PORT: "4000",
+    };
+    const env: Env = validateEnv(source);
+    expect(env.port).toBe(4000);
+  });
 });

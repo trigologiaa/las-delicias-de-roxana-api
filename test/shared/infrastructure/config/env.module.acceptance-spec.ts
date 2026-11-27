@@ -11,4 +11,10 @@ describe("Environment configuration", (): void => {
     const startup = createTestApp();
     await expect(startup).rejects.toThrow("DATABASE_URL");
   });
+
+  it("refuses to start when PORT is not a valid port", async (): Promise<void> => {
+    vi.stubEnv("PORT", "abc");
+    const startup = createTestApp();
+    await expect(startup).rejects.toThrow("PORT");
+  });
 });
