@@ -23,4 +23,21 @@ describe("API documentation", (): void => {
     expect(page.type).toBe("text/html");
     expect(contract.body.paths).toHaveProperty(["/v1/health"]);
   });
+
+  it("describes the body returned by the health check", async (): Promise<void> => {
+    const contract = await request(application.getHttpServer()).get(
+      "/docs-json",
+    );
+    expect(contract.body.components.schemas.HealthResponseDto).toMatchObject({
+      properties: {
+        status: {
+          type: "string",
+        },
+        version: {
+          type: "string",
+        },
+      },
+      required: ["status", "version"],
+    });
+  });
 });
