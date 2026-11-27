@@ -1,6 +1,21 @@
 {
   "openapi": "3.0.0",
-  "paths": {},
+  "paths": {
+    "/v1/health": {
+      "get": {
+        "operationId": "HealthController_check",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Health"
+        ]
+      }
+    }
+  },
   "info": {
     "title": "Las Delicias de Roxana API",
     "description": "",

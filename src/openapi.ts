@@ -2,6 +2,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import { Logger } from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./app.module";
+import { configureApp } from "./app-setup";
 import { buildOpenApiDocument } from "./openapi-document";
 
 const FILE = "openapi.json";
@@ -10,6 +11,7 @@ const app = await NestFactory.create(AppModule, {
   preview: true,
   logger: ["error"],
 });
+configureApp(app);
 const generated: string = `${JSON.stringify(buildOpenApiDocument(app), null, 2)}\n`;
 
 await app.close();
