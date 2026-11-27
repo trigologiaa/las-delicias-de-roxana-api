@@ -1,0 +1,7 @@
+{
+  "$schema": "https://swc.rs/schema.json",
+  "jsc": {
+    "baseUrl": "./",
+    "target": "es2024"
+  }
+}
