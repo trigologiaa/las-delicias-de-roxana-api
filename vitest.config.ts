@@ -8,25 +8,22 @@ export default defineConfig({
     projects: [
       {
         extends: true,
-        test: {
-          include: ["src/**/*.spec.ts"],
-          name: "unit",
-        },
+        test: { name: "unit", include: ["test/**/*.unit-spec.ts"] },
       },
       {
         extends: true,
         test: {
-          fileParallelism: false,
-          include: ["src/**/*.int-spec.ts"],
           name: "integration",
+          include: ["test/**/*.integration-spec.ts"],
+          fileParallelism: false,
         },
       },
       {
         extends: true,
         test: {
-          include: ["acceptance/**/*.e2e-spec.ts"],
-          fileParallelism: false,
           name: "e2e",
+          include: ["test/**/*.{acceptance,e2e}-spec.ts"],
+          fileParallelism: false,
         },
       },
     ],

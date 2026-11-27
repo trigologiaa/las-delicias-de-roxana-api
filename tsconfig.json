@@ -15,5 +15,5 @@
     "target": "esnext",
     "types": ["node"]
   },
-  "include": ["src", "acceptance", "test", "*.config.ts"]
+  "include": ["src", "test", "*.config.ts"]
 }
